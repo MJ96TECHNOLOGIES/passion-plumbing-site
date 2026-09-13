@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Gallery - Passion Plumbing & Projects</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <a href="dashboard.html" class="home-link">
+      <img src="assets/images/logo.jpg" alt="Passion Plumbing Logo" class="logo-img">
+      <span>Passion Plumbing & Projects</span>
+    </a>
+  </div>
+  <nav class="nav-links">
+  <ul>
+    <li><a href="dashboard.html#about">About</a></li>
+    <li><a href="dashboard.html#services">Services</a></li>
+    <li><a href="dashboard.html#projects">Projects</a></li>
+    <li><a href="dashboard.html#contact">Contacts</a></li>
+  </ul>
+</nav>
+
+</header>
+
+<section class="gallery">
+  <h2 id="gallery-title"></h2>
+  <div class="grid" id="gallery-grid"></div>
+
+  <div class="back-btn">
+    <a href="dashboard.html#services" class="btn">← Back to Services</a>
+  </div>
+</section>
+
+<script>
+  // Read service name from URL parameter
+  const params = new URLSearchParams(window.location.search);
+  const service = params.get('service');
+
+  const galleryTitle = document.getElementById('gallery-title');
+  const galleryGrid = document.getElementById('gallery-grid');
+
+  // Define image sets for each service
+  const galleries = {
+    plumbing: ['plumbing1.jpg','plumbing2.jpg','plumbing3.jpg','plumbing4.jpg'],
+    ceiling: ['ceiling.jpg','ceiling2.jpg','ceiling3.jpg','ceiling4.jpg'],
+    tiling: ['tiling1.jpg','tiling2.jpg','tiling3.jpg'],
+    solar: ['solar1.jpg','solar2.jpg','solar3.jpg','solar4.jpg']
+  };
+
+  if (service && galleries[service]) {
+    // Capitalize service name for heading
+    galleryTitle.textContent = service.charAt(0).toUpperCase() + service.slice(1) + " Projects";
+    // Load images dynamically
+    galleries[service].forEach(img => {
+      const image = document.createElement('img');
+      image.src = `assets/images/${img}`;
+      image.alt = `${service} project`;
+      galleryGrid.appendChild(image);
+    });
+  } else {
+    galleryTitle.textContent = "Service Not Found";
+  }
+
+</script>
+
+</body>
+</html>
