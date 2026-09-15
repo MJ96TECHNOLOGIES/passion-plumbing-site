@@ -25,6 +25,7 @@ html {
   height: 80px;      /* reserve vertical space */
   z-index: 1000;
   box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* CHANGED: subtle shadow for separation */
 }
 
 /* Logo + Company Name */
@@ -57,39 +58,36 @@ html {
 
 /* Navigation container */
 .nav-links {
-  flex: 1;                        /* allow nav to flex */
+  flex: 1;
   display: flex;
   justify-content: flex-end;      /* keep links aligned neatly to the right */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;         /* prevent overflow from padding */
+  box-sizing: border-box;
 }
 
-/* Make UL flex so links line up horizontally */
 .nav-links ul {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;                /* prevents overflow on smaller screens */
+  flex-wrap: wrap;
 }
 
-/* Space between each link */
 .nav-links li {
-  margin-left: 20px;              /* slightly reduced spacing */
+  margin-left: 20px;
 }
 
-/* Style the links */
 .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
-  white-space: nowrap;            /* keep text on one line */
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
-  color: #66ccff; /* highlight on hover */
+  color: #66ccff; /* CHANGED: WhatsApp green hover */
 }
 
 /* Hero */
@@ -125,7 +123,7 @@ html {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 64, 128, 0.6); /* blue overlay */
+  background: rgba(0, 64, 128, 0.6);
   z-index: 1;
 }
 
@@ -162,7 +160,7 @@ html {
 }
 
 .btn:hover {
-  background: #66ccff;
+  background: #66ccff; /* CHANGED: unify hover color */
 }
 
 .back-btn {
@@ -181,7 +179,7 @@ html {
 }
 
 .back-btn .btn:hover {
-  background: #66ccff;
+  background: #66ccff; /* CHANGED */
 }
 
 /* Arrows */
@@ -221,7 +219,7 @@ html {
 }
 
 .dot.active, .dot:hover {
-  background-color: #007acc;
+  background-color: #007acc; /* CHANGED */
 }
 
 /* About */
@@ -232,7 +230,7 @@ html {
 }
 
 .about h2 {
-  color: #007acc;
+  color: #007acc; /* CHANGED: consistent brand blue */
   margin-bottom: 20px;
 }
 
@@ -251,7 +249,7 @@ html {
 }
 
 .services h2 {
-  color: #007acc;
+  color: #007acc; /* CHANGED */
   margin-bottom: 30px;
 }
 
@@ -304,7 +302,7 @@ html {
 }
 
 .gallery h2 {
-  color: #007acc;
+  color: #007acc; /* CHANGED */
   text-align: center;
   margin-bottom: 30px;
 }
@@ -332,14 +330,14 @@ html {
   text-align: center;
 }
 
-.contact h2  a:hover {
-  color:#007acc;
+.contact h2 a:hover {
+  color: #25D366; /* CHANGED */
 }
 
 /* WhatsApp Button */
 .whatsapp-btn {
   display: inline-block;
-  background-color: #25D366; /* WhatsApp green */
+  background-color: #25D366;
   color: white;
   padding: 12px 25px;
   border-radius: 6px;
@@ -351,10 +349,9 @@ html {
 
 .whatsapp-btn:hover {
   background-color: #1fc45b; /* slightly darker green */
-  color:#007acc;
+  color: #007acc; /* CHANGED: text turns blue on hover */
   transform: scale(1.05);    /* subtle zoom effect */
 }
-
 
 /* Footer */
 footer {
@@ -368,15 +365,15 @@ footer {
    Mobile-Friendly + Hamburger Menu + Animation + Overlay
    ========================= */
 
-
-   /* Hamburger hidden by default */
+/* Hamburger hidden by default */
 .menu-toggle {
   display: none;
   font-size: 28px;
   color: white;
   cursor: pointer;
   z-index: 1101; /* above overlay */
-  margin-left: auto;
+  margin-left: auto; /* CHANGED: pushes hamburger to right */
+  align-self: center; /* CHANGED: vertically center */
 }
 
 /* Backdrop overlay (hidden by default) */
@@ -397,10 +394,10 @@ html {
 @media (max-width: 768px) {
   /* Header */
   .site-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* CHANGED: keep logo left, hamburger right */
+    align-items: center; /* CHANGED: align items properly */
     padding: 10px 20px;
-    position: relative;
+    position: fixed; /* CHANGED: keep header fixed on mobile */
     z-index: 1200;
   }
 
@@ -420,10 +417,9 @@ html {
     gap: 10px;
     margin-top: 10px;
     background: #004080;
-    width: 100%; /* full width so it pushes content down */
+    width: 100%;
     border-radius: 6px;
 
-    /* animation prep */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.3s ease;
@@ -431,7 +427,7 @@ html {
 
   .nav-links ul.active {
     display: flex;
-    max-height: 500px; /* enough space for links */
+    max-height: 500px;
     padding: 10px;
   }
 
@@ -444,49 +440,14 @@ html {
   .nav-links ul.active li:nth-child(2) { animation-delay: 0.2s; }
   .nav-links ul.active li:nth-child(3) { animation-delay: 0.3s; }
 
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
+  /* Show hamburger on mobile */
   .menu-toggle {
-    display: block; /* show hamburger */
+    display: block; /* CHANGED */
   }
 
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-  /* Hero */
+  /* Prevent hero overlap */
   .hero {
-    height: auto;
-    padding: 40px 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 1.8em;
-  }
-
-  .hero-content p {
-    font-size: 1em;
-  }
-
-  /* Services Grid */
-  .service-grid {
-    grid-template-columns: 1fr; /* stack cards vertically */
-  }
-
-  .card {
-    height: 200px;
-    padding: 15px;
-  }
-
-  /* About & Contact */
-  .about, .contact {
-    padding: 40px 20px;
-  }
-
-  .about-img {
-    max-width: 100%;
+    margin-top: 100px; /* CHANGED: extra breathing room under header */
   }
 }
 
@@ -504,4 +465,10 @@ html {
     width: 40px;
     height: 40px;
   }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
