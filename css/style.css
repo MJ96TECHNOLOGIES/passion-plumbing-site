@@ -15,12 +15,16 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 0 20px;
   background: linear-gradient(135deg, #004080, #007acc); /* main blue gradient */
   color: white;
-  position: sticky;
+  position: fixed;   /* stays at top */
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;      /* reserve vertical space */
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 /* Logo + Company Name */
@@ -53,21 +57,26 @@ html {
 
 /* Navigation container */
 .nav-links {
+  flex: 1;                        /* allow nav to flex */
+  display: flex;
+  justify-content: flex-end;      /* keep links aligned neatly to the right */
   margin: 0;
   padding: 0;
+  box-sizing: border-box;         /* prevent overflow from padding */
 }
 
 /* Make UL flex so links line up horizontally */
 .nav-links ul {
   list-style: none;
-  display: flex;        /* forces horizontal layout */
+  display: flex;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;                /* prevents overflow on smaller screens */
 }
 
 /* Space between each link */
 .nav-links li {
-  margin-left: 25px;
+  margin-left: 20px;              /* slightly reduced spacing */
 }
 
 /* Style the links */
@@ -76,18 +85,19 @@ html {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
+  white-space: nowrap;            /* keep text on one line */
 }
 
 .nav-links a:hover {
-  color: #004080; /* highlight on hover */
+  color: #66ccff; /* highlight on hover */
 }
-
 
 /* Hero */
 .hero {
   position: relative;
   height: 80vh;
   overflow: hidden;
+  margin-top: 80px; /* push hero down below fixed header */
 }
 
 .hero-slider {
@@ -142,7 +152,7 @@ html {
 }
 
 .btn {
-  background: #004080;
+  background: #007acc;
   padding: 12px 25px;
   color: white;
   text-decoration: none;
@@ -152,7 +162,7 @@ html {
 }
 
 .btn:hover {
-  background: #007acc;
+  background: #66ccff;
 }
 
 .back-btn {
@@ -161,7 +171,7 @@ html {
 }
 
 .back-btn .btn {
-  background: #004080;
+  background: #007acc;
   padding: 12px 25px;
   color: white;
   text-decoration: none;
@@ -171,7 +181,7 @@ html {
 }
 
 .back-btn .btn:hover {
-  background: #007acc;
+  background: #66ccff;
 }
 
 /* Arrows */
@@ -211,7 +221,7 @@ html {
 }
 
 .dot.active, .dot:hover {
-  background-color: #004080;
+  background-color: #007acc;
 }
 
 /* About */
@@ -222,7 +232,7 @@ html {
 }
 
 .about h2 {
-  color: #004080;
+  color: #007acc;
   margin-bottom: 20px;
 }
 
@@ -241,7 +251,7 @@ html {
 }
 
 .services h2 {
-  color: #004080;
+  color: #007acc;
   margin-bottom: 30px;
 }
 
@@ -294,7 +304,7 @@ html {
 }
 
 .gallery h2 {
-  color: #004080;
+  color: #007acc;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -322,9 +332,29 @@ html {
   text-align: center;
 }
 
-.contact h2 {
-  color: #004080;
+.contact h2  a:hover {
+  color:#007acc;
 }
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  display: inline-block;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.whatsapp-btn:hover {
+  background-color: #1fc45b; /* slightly darker green */
+  color:#007acc;
+  transform: scale(1.05);    /* subtle zoom effect */
+}
+
 
 /* Footer */
 footer {
@@ -338,13 +368,15 @@ footer {
    Mobile-Friendly + Hamburger Menu + Animation + Overlay
    ========================= */
 
-/* Hamburger hidden by default */
+
+   /* Hamburger hidden by default */
 .menu-toggle {
   display: none;
   font-size: 28px;
   color: white;
   cursor: pointer;
   z-index: 1101; /* above overlay */
+  margin-left: auto;
 }
 
 /* Backdrop overlay (hidden by default) */
