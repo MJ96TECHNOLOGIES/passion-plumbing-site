@@ -79,7 +79,7 @@ html {
 }
 
 .nav-links a:hover {
-  color: #ffcc00; /* highlight on hover */
+  color: #004080; /* highlight on hover */
 }
 
 
@@ -211,7 +211,7 @@ html {
 }
 
 .dot.active, .dot:hover {
-  background-color: #ffcc00;
+  background-color: #004080;
 }
 
 /* About */
@@ -357,6 +357,11 @@ footer {
   z-index: 1100;
 }
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 @media (max-width: 768px) {
   /* Header */
   .site-header {
@@ -377,10 +382,7 @@ footer {
     gap: 10px;
     margin-top: 10px;
     background: #004080;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 200px;
+    width: 100%; /* full width so it pushes content down */
     border-radius: 6px;
 
     /* animation prep */
@@ -466,6 +468,3 @@ footer {
     height: 40px;
   }
 }
-
-
-
