@@ -78,4 +78,13 @@ overlay.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
+/* CHANGED: Close menu + overlay when a nav link is clicked */
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    overlay.style.display = 'none';
+  });
+});
+
+
 
