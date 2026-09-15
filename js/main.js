@@ -56,28 +56,26 @@ dots.forEach((dot, index) => {
 
 // Initialize
 showSlide(current);
-startAutoSlide();
+startAutoSlide()
 
-// Highlight active nav link on scroll
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
+// Hamburger toggle
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links ul');
+const overlay = document.createElement('div');
+overlay.classList.add('menu-overlay');
+document.body.appendChild(overlay);
 
-window.addEventListener("scroll", () => {
-  let currentSection = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80; // adjust for header height
-    const sectionHeight = section.offsetHeight;
-    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-      currentSection = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(currentSection)) {
-      link.classList.add("active");
-    }
-  });
+// Toggle menu
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navLinks.classList.toggle('active');
+  overlay.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
 });
+
+// Close when clicking outside or on overlay
+overlay.addEventListener('click', () => {
+  navLinks.classList.remove('active');
+  overlay.style.display = 'none';
+});
+
 
